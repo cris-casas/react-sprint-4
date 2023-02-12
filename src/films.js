@@ -9,6 +9,8 @@ function getAllDirectors(array) {
 
 }
 
+//getAllDirectors(movies);
+
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
 
@@ -88,12 +90,48 @@ function moviesAverageByCategory(array, category) {
 
 }
 
-//moviesAverageByCategory(movies, 'Crime');
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+
+  let minutsArr = [...array];
+  const noNum = /\D+/g;
+  let result = minutsArr.map( movie => {
+  
+
+    let nums = movie.duration.replace(noNum, '');
+    let hours = parseInt(nums.slice(0,1));
+    let min = parseInt(nums.slice(1,3));
+    movie.duration = parseInt(hours*60+min);
+    return movie;
+    
+    });
+    return result;
+  
+}
+
+//console.log(hoursToMinutes(movies));
+
+/*
+
+let result = minutsArr.map( movie => {
+  
+  //let hours = movie.duration.slice(0,1);
+  //movie.duration = hours*60;
+  let nums = movie.duration.replace(noNum, '');
+  let hours = parseInt(nums.slice(0,1));
+  let min = parseInt(nums.slice(1,3));
+  movie.duration = parseInt(hours*60+min);
+  return movie;
+  
+  });
+  //console.log(array);
+  //console.log(minutsArray);
+  return result;
+  
 
 }
+*/
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
