@@ -18,32 +18,44 @@ function getMoviesFromDirector(array, director) {
 
 }
 
-
+/*
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
-
   let initialValue = 0;
   let movDir =  getMoviesFromDirector(array, director);
   let scoreArray =  movDir.reduce((total, value) => total + value.score, initialValue);
   let result = Number((scoreArray / movDir.length).toFixed(2));
   //let result = scoreArray / movDir.length;
-  console.log("EXERCICE 2 ->", result);
+  console.log("EXERCICE 3 ->", result);
   return result;
+}
+*/
 
+// Exercise 3+6: Calculate the average of the films of a given director or by category Array (ex 6)
+function moviesAverageOfDirector(array, director) {
+  if (director) {
+    array =  getMoviesFromDirector(array, director);
+  }
+  let initialValue = 0;
+  let scoreArray =  array.reduce((total, value) => total + value.score, initialValue);
+  let result = Number((scoreArray / array.length).toFixed(2));
+  console.log("EXERCICE 3 ->", result);
+  return result;
 }
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
   
-/*Rep una array de pelicules i retorna ordenat alfabeticament, només els títols de les 20 primeres.*/
+//Rep una array de pelicules i retorna ordenat alfabeticament, només els títols de les 20 primeres.
 let result = array.map(movie => movie.title).sort().slice(0,20);
+console.log("EXERCICE 4 ->", result);
 return result;
 
 }
 
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
-  
+
 // a<b = negativo = se mueve el A
 // a==b = 0 = NADA
 // a>b = positivo = se mueve el B
@@ -51,15 +63,32 @@ function orderByYear(array) {
 let newArray = [...array];
 let orderAlph = newArray.sort((a, b) => {if (a.title < b.title) return -1;});
 let orderYear = orderAlph.sort((a, b) => a.year - b.year);
-
+console.log("EXERCICE 5 ->", orderYear);
 return orderYear;
 
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array, category) {
+
+  let categoryArray = array.filter(movie => { if (movie.genre.includes(category) && movie.score) return movie });
+  let result = moviesAverageOfDirector(categoryArray);
+  console.log("EXERCICE 6 ->", result);
+  return result;
+
+  /*
+  // FUNCIÓ 6 SENCERA (SENSE 3)
+  let initialValue = 0;
+  let newArray = array.filter(movie => { if (movie.genre.includes(category) && movie.score) return movie });
+  let totScore = newArray.reduce((total, value) => total + value.score, initialValue);
+  let result = Number(( totScore / newArray.length).toFixed(2));
+  console.log("EXERCICE 6 ->", result);
+  return result;
+  */
 
 }
+
+//moviesAverageByCategory(movies, 'Crime');
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
