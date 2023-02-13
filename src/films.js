@@ -123,9 +123,19 @@ function hoursToMinutes(array) {
 
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
+function bestFilmOfYear(array, year) {
+
+  let filrArray = array.filter( movie => movie.year === year);
+  //let mapa = filrArray.map( movie => movie.score; return Math.max(...mapa) );
+    
+  return filrArray;
+  //let result = Math.max(...mapa);
+
   
 }
+
+
+console.log(bestFilmOfYear(movies, 1990));
 
 
 
