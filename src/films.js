@@ -6,7 +6,6 @@ function getAllDirectors(array) {
   let result =  array.map( movie => movie.director);
   console.log("EXERCICE 1 ->", result);
   return result;
-
 }
 
 //getAllDirectors(movies);
@@ -17,7 +16,6 @@ function getMoviesFromDirector(array, director) {
   let result =  array.filter( movie => movie.director === director);
   console.log("EXERCICE 2 ->", result);
   return result;
-
 }
 
 /*
@@ -52,7 +50,6 @@ function orderAlphabetically(array) {
 let result = array.map(movie => movie.title).sort().slice(0,20);
 console.log("EXERCICE 4 ->", result);
 return result;
-
 }
 
 // Exercise 5: Order by year, ascending
@@ -67,7 +64,6 @@ let orderAlph = newArray.sort((a, b) => {if (a.title < b.title) return -1;});
 let orderYear = orderAlph.sort((a, b) => a.year - b.year);
 console.log("EXERCICE 5 ->", orderYear);
 return orderYear;
-
 }
 
 // Exercise 6: Calculate the average of the movies in a category
@@ -87,7 +83,6 @@ function moviesAverageByCategory(array, category) {
   console.log("EXERCICE 6 ->", result);
   return result;
   */
-
 }
 
 
@@ -110,33 +105,24 @@ function hoursToMinutes(array) {
     } else {
       totalMinDuration = parseInt(nums*60);
     }
-
     return {
       ...movie,
       duration: totalMinDuration
     }
   })
-
   return result;
-  
 }
 
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(array, year) {
 
-  let filrArray = array.filter( movie => movie.year === year);
-  //let mapa = filrArray.map( movie => movie.score; return Math.max(...mapa) );
-    
-  return filrArray;
-  //let result = Math.max(...mapa);
-
-  
+  let yearArray = array.filter( movie => movie.year === year);
+  let scoreArray = yearArray.map( movie => movie.score);
+  let indice = scoreArray.indexOf(Math.max(...scoreArray));
+  const result = yearArray.slice(indice, 1);
+  return result;
 }
-
-
-console.log(bestFilmOfYear(movies, 1990));
-
 
 
 // The following is required to make unit tests work.
